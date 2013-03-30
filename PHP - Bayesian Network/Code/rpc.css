@@ -1,0 +1,53 @@
+body{
+text-align : justify;
+font-family:arial;
+font-size:13px;
+}
+
+h1{
+text-align:center;
+color:#3a509c;
+}
+h2{
+color:#3a509c;
+}
+#entete{
+width:100%;
+}
+#tabprobas{
+margin-left:auto;
+   margin-right:auto;
+   width:300px;
+   border-width:1px;
+border-style:solid;
+	
+}
+#listevariables{
+border-style:solid;
+border-radius:15px;
+border-color:#3a509c;
+padding:5px;
+}
+#resultats{
+
+padding:5px;
+}
+#legende{
+font-style :italic;
+
+}
+#resume{
+border-style:solid;
+border-radius:15px;
+padding:5px;
+border-color:#3a509c;
+Background-color:#e5e6e7;
+
+}
+
+#tabihm{
+border-width:1px;
+border-style:solid;
+margin-right:auto;
+margin-left:auto;
+}

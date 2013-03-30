@@ -1,0 +1,32 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j">
+
+	<rich:panel>
+		<h:form>
+			<h:commandLink action="welcome">
+				<h:outputText value="#{strings['bookstore']}" />
+			</h:commandLink>
+		</h:form>
+
+		<div id="language">
+			<h:form>
+				<h:commandLink action='#{boutiqueBacking.changeLanguage("en")}'>
+					<h:graphicImage name="flags/en_GB.png" library="icons"
+						style="border:0" />
+					<a4j:ajax render="@leftForm,centerForm,rightForm" />
+
+				</h:commandLink>
+				<h:commandLink action='#{boutiqueBacking.changeLanguage("fr")}'>
+					<h:graphicImage name="flags/fr_FR.png" library="icons"
+						style="border:0" />
+					<a4j:ajax render="@leftForm,centerForm,rightForm" />
+				</h:commandLink>
+			</h:form>
+		</div>
+
+	</rich:panel>
+</ui:composition>

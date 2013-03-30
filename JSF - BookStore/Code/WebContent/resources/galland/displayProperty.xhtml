@@ -1,0 +1,26 @@
+<ui:component
+ xmlns="http://www.w3.org/1999/xhtml"
+ xmlns:c="http://java.sun.com/jsp/jstl/core"
+ xmlns:f="http://java.sun.com/jsf/core"
+ xmlns:h="http://java.sun.com/jsf/html"
+ xmlns:ui="http://java.sun.com/jsf/facelets"
+ xmlns:composite="http://java.sun.com/jsf/composite">
+ <composite:interface>
+  <composite:attribute name="property" />
+ </composite:interface>
+ <composite:implementation>
+  <c:set
+   var="bean"
+   value="#{cc.parent.attrs.bean}" />
+  <c:set
+   var="property"
+   value="#{cc.attrs.property}" />
+  <c:set
+   var="propertyKey"
+   value="#{bean['class'].simpleName}.#{property}" />
+  <tr>
+   <td class="form-table-first">#{strings[propertyKey]}</td>
+   <td class="form-table-second">#{bean[property]}</td>
+  </tr>
+ </composite:implementation>
+</ui:component>

@@ -1,0 +1,33 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j" template="/template.xhtml">
+	<ui:define name="center">
+   
+	<h:outputText value="#{strings['commande']}" />
+   
+ 	<h:outputText
+			value="#{strings['resumeCommande']}:" />
+		<h:panelGroup>
+			<rich:dataTable value="#{boutiqueBacking.commandeConsulte.items}" var="items">
+				<h:column>
+					<h:commandLink
+						action="#{boutiqueBacking.selectBook(items.book.id)}">
+						<h:outputText value="#{items.book.title}" />
+					</h:commandLink>
+				</h:column>
+				<h:column>
+					<h:outputText value="#{items.quantity}" />
+				</h:column>
+				<h:column>
+					<h:outputText value="#{items.total}" />
+				</h:column>
+			</rich:dataTable>
+		</h:panelGroup>
+  
+  
+     
+	</ui:define>
+</ui:composition>

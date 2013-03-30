@@ -1,0 +1,47 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j" template="/template.xhtml">
+	<ui:define name="center">
+   
+	<h:outputText value="#{strings['panier']}" />
+   	<h:outputText value="#{strings['panierVide']}" rendered="#{boutiqueBacking.panier.size == 0}"/>
+    
+   	<h:panelGroup rendered="#{boutiqueBacking.panier.size != 0}">
+	   <rich:dataTable value="#{boutiqueBacking.panier.items}" var="items">
+				<h:column>
+					<h:commandLink action="#{boutiqueBacking.selectBook(items.book.id)}">
+						<h:outputText value="#{items.book.title}" />
+					</h:commandLink>
+				</h:column>
+				<h:column>
+					<h:outputText value="#{items.quantity}" />
+				</h:column>
+				<h:column>
+					<h:outputText value="#{items.total}" />
+				</h:column>
+				<h:column>
+					<h:commandLink action="#{boutiqueBacking.addBasket(items.book)}" >
+					<h:graphicImage name="24/add-icon.png" library="icons"
+						style="border:0" />
+					</h:commandLink>	
+				</h:column>
+				<h:column>
+					<h:commandLink action="#{boutiqueBacking.removeBasket(items.book)}" >
+					<h:graphicImage name="24/remove-icon.png" library="icons"
+						style="border:0" />
+					</h:commandLink>	
+				</h:column>
+		</rich:dataTable>
+		<br/>
+		<h:commandLink action="#{boutiqueBacking.commander()}" rendered="#{boutiqueBacking.client.login != null}" > 				<h:outputText value="#{strings['commander']}" /> 
+		</h:commandLink>
+		<h:commandLink action="login" rendered="#{boutiqueBacking.client.login == null}" > 
+			<h:outputText value="#{strings['commander']}" />  
+		</h:commandLink>
+
+	</h:panelGroup>
+	</ui:define>
+</ui:composition>

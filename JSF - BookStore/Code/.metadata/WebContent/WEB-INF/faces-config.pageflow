@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf13544748072500" configfile="/BookStore-Hibernate-JSF20-Start/WebContent/WEB-INF/faces-config.xml">
+  <nodes xsi:type="pageflow:PFPage" name="*" x="122" y="1532" id="pf13584329754410" referenceLink="//@navigationRule.0/@fromViewId|" outlinks="pf13584329754421 pf13584329754422 pf13584329754423 pf13584329754424 pf13584329754425 pf13584329754426 pf13584329754427" path="*"/>
+  <nodes xsi:type="pageflow:PFPage" name="book.xhtml" x="338" y="178" id="pf13584329754429" referenceLink="//@navigationRule.5/@navigationCase.0/@toViewId|" outlinks="pf135843297544210" inlinks="pf13584329754421 pf135843297544210" path="/book.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="category.xhtml" x="338" y="562" id="pf135843297544211" referenceLink="//@navigationRule.0/@navigationCase.1/@toViewId|" inlinks="pf13584329754422" path="/category.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="panier.xhtml" x="338" y="946" id="pf135843297544212" referenceLink="//@navigationRule.0/@navigationCase.2/@toViewId|" inlinks="pf13584329754423" path="/panier.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="login.xhtml" x="554" y="1532" id="pf135843297544313" referenceLink="//@navigationRule.2/@navigationCase.0/@toViewId|" outlinks="pf135843297544314" inlinks="pf13584329754424 pf135843297544315" path="/login.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="register.xhtml" x="338" y="1330" id="pf135843297544316" referenceLink="//@navigationRule.2/@fromViewId|" outlinks="pf135843297544315" inlinks="pf13584329754425" path="/register.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="client.xhtml" x="770" y="1937" id="pf135843297544317" referenceLink="//@navigationRule.3/@fromViewId|" outlinks="pf135843297544318" inlinks="pf13584329754426 pf135843297544314" path="/client.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="welcome.xhtml" x="338" y="1735" id="pf135843297544319" referenceLink="//@navigationRule.0/@navigationCase.6/@toViewId|" inlinks="pf13584329754427" path="/welcome.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="orders.xhtml" x="986" y="1937" id="pf135843297544320" referenceLink="//@navigationRule.4/@fromViewId|" outlinks="pf135843297544321" inlinks="pf135843297544318" path="/orders.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="order.xhtml" x="1202" y="1937" id="pf135843297544322" referenceLink="//@navigationRule.4/@navigationCase.0/@toViewId|" inlinks="pf135843297544321" path="/order.xhtml"/>
+  <links id="pf13584329754421" target="pf13584329754429" source="pf13584329754410" outcome="book"/>
+  <links id="pf13584329754422" target="pf135843297544211" source="pf13584329754410" outcome="category"/>
+  <links id="pf13584329754423" target="pf135843297544212" source="pf13584329754410" outcome="panier"/>
+  <links id="pf13584329754424" target="pf135843297544313" source="pf13584329754410" outcome="login"/>
+  <links id="pf13584329754425" target="pf135843297544316" source="pf13584329754410" outcome="register"/>
+  <links id="pf13584329754426" target="pf135843297544317" source="pf13584329754410" outcome="client"/>
+  <links id="pf13584329754427" target="pf135843297544319" source="pf13584329754410" outcome="logout"/>
+  <links id="pf135843297544314" target="pf135843297544317" source="pf135843297544313" outcome="done"/>
+  <links id="pf135843297544315" target="pf135843297544313" source="pf135843297544316" outcome="done"/>
+  <links id="pf135843297544318" target="pf135843297544320" source="pf135843297544317" outcome="done"/>
+  <links id="pf135843297544321" target="pf135843297544322" source="pf135843297544320" outcome="order"/>
+  <links id="pf135843297544210" target="pf13584329754429" source="pf13584329754429" outcome="success">
+    <bendPoints d1Height="-36" d2Height="-36"/>
+    <bendPoints d1Width="-64" d1Height="-36" d2Width="-64" d2Height="-36"/>
+    <bendPoints d1Width="-64" d2Width="-64"/>
+  </links>
+</pageflow:Pageflow>

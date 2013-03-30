@@ -1,0 +1,30 @@
+div#global {
+  
+}
+
+div#top {
+}
+
+div#content {
+  position: relative;
+  width: 100%;
+}
+
+
+div#left {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 180px;
+}
+
+div#right {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+div#center {
+  margin-left: 200px;
+  margin-right: 240px;
+}

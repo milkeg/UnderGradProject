@@ -1,0 +1,23 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:rich="http://richfaces.org/rich">
+	
+	<rich:panel id="clientSummary">
+
+		<h:panelGroup rendered="#{boutiqueBacking.client.login == null || boutiqueBacking.client.password == null || boutiqueBacking.client.validate != true}">
+			<h:commandLink action="#{boutiqueBacking.checkCookie()}"><h:outputText value="#{strings['seConnecter']}" /></h:commandLink>
+			<h:commandLink action="register"> <h:outputText value="#{strings['sinscrire']}" /> </h:commandLink>
+		</h:panelGroup>
+		<h:panelGroup rendered="#{boutiqueBacking.client.login != null and boutiqueBacking.client.password != null and boutiqueBacking.client.validate == 'true'}">
+			<h:outputText value="#{strings['bienvenue']}:"></h:outputText>
+			<h:commandLink action="client">
+				<h:outputText value="#{boutiqueBacking.client.login}"></h:outputText>
+			</h:commandLink>
+			<br />
+			<h:commandLink action="#{boutiqueBacking.doLogout()}"> <h:outputText value="#{strings['seDeconnecter']}" /> </h:commandLink>
+		</h:panelGroup>
+
+	</rich:panel>
+</ui:composition>

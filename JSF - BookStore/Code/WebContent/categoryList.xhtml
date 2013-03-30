@@ -1,0 +1,19 @@
+<ui:composition
+ xmlns="http://www.w3.org/1999/xhtml"
+ xmlns:ui="http://java.sun.com/jsf/facelets"
+ xmlns:f="http://java.sun.com/jsf/core"
+ xmlns:h="http://java.sun.com/jsf/html"
+ xmlns:rich="http://richfaces.org/rich">
+ <rich:dataTable
+  value="#{boutiqueBacking.list}"
+  var="category">
+  <f:facet name="header"><h:outputText value="#{strings['categories']}" /></f:facet>
+  <h:column>
+   <h:commandLink
+    action="#{boutiqueBacking.selectCategory(category.id)}"
+    immediate="true">
+    <h:outputText value="#{category.title}" />
+   </h:commandLink>
+  </h:column>
+ </rich:dataTable>
+</ui:composition>

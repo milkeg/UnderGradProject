@@ -1,0 +1,25 @@
+<ui:composition
+ xmlns="http://www.w3.org/1999/xhtml"
+ xmlns:ui="http://java.sun.com/jsf/facelets"
+ xmlns:f="http://java.sun.com/jsf/core"
+ xmlns:h="http://java.sun.com/jsf/html"
+ xmlns:rich="http://richfaces.org/rich"
+ xmlns:a4j="http://richfaces.org/a4j"
+ template="/template.xhtml">
+ <ui:define name="center">
+   <h:outputText value="#{strings['book']}" />
+   <!-- <h:outputText value="#{boutiqueBacking.book.title}" /> -->
+
+      <h:panelGrid columns="2"> 
+           <h:outputText value="#{strings['Book.title']}"/>
+           <h:outputText value="#{boutiqueBacking.book.title}"/>
+           <h:outputText value="#{strings['Book.price']}"/>
+           <h:outputText value="#{boutiqueBacking.book.price}"/>
+      </h:panelGrid>
+   
+	<a4j:mediaOutput element="img" cacheable="false" session="false" createContent="#{boutiqueBacking.paint}" value="#{boutiqueBacking.book.id}" mimeType="image/jpeg"/>
+	
+    <h:commandButton value="#{strings['addBasket']}" action="#{boutiqueBacking.addBasket()}" />
+   
+ </ui:define>
+</ui:composition>

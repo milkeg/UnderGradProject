@@ -1,0 +1,25 @@
+<ui:composition
+ xmlns="http://www.w3.org/1999/xhtml"
+ xmlns:ui="http://java.sun.com/jsf/facelets"
+ xmlns:f="http://java.sun.com/jsf/core"
+ xmlns:h="http://java.sun.com/jsf/html"
+ xmlns:rich="http://richfaces.org/rich"
+ template="/template.xhtml">
+ <ui:define name="center">
+
+   <h:outputText value="#{strings['category']}" />
+
+   <h:outputText value="#{boutiqueBacking.category.title}" />
+   
+   <rich:dataTable
+      value="#{boutiqueBacking.category.books}"
+      var="book"
+    >
+      <h:column>
+        <h:commandLink action="#{boutiqueBacking.selectBook(book.id)}">
+          <h:outputText value="#{book.title}" />
+          </h:commandLink>
+      </h:column>
+    </rich:dataTable>   
+ </ui:define>
+</ui:composition>

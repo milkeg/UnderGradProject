@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html
+ xmlns="http://www.w3.org/1999/xhtml"
+ xmlns:ui="http://java.sun.com/jsf/facelets"
+ xmlns:h="http://java.sun.com/jsf/html"
+ xmlns:f="http://java.sun.com/jsf/core"
+ xmlns:rich="http://richfaces.org/rich"
+ xmlns:a4j="http://richfaces.org/a4j">
+<f:view id="view" locale="#{boutiqueBacking.locale}">
+ <h:head>
+  <meta
+   http-equiv="Content-Type"
+   content="text/html; charset=UTF-8" />
+  <title><h:outputText value="#{strings['bookstore']}" /></title>
+  <h:outputStylesheet
+   library="css"
+   name="bookstore.css" />
+ </h:head>
+ <body class="main-body">
+
+  <div id="global">
+   <div id="top">
+    <ui:include src="/top.xhtml" />
+   </div>
+   <div id="content">
+    <div id="left">
+     <h:form id="leftForm">
+      <ui:include src="/categoryList.xhtml" />
+     </h:form>
+    </div>
+    <div id="center">
+     <h:form id="centerForm">
+      <ui:insert name="center" />
+     </h:form>
+    </div>
+    <div id="right">
+     <h:form id="rightForm">
+      <ui:include src="/panierSummary.xhtml" />
+      <ui:include src="/clientSummary.xhtml" />
+     </h:form>
+    </div>
+   </div>
+  </div>
+ </body>
+</f:view>
+</html>

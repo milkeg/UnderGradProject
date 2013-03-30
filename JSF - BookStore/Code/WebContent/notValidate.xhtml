@@ -1,0 +1,16 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:s="http://jboss.com/products/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j" template="/template.xhtml">
+	<ui:define name="center">
+		<rich:panel>
+			<p><h:outputText value="#{strings['attenteValid']}" />.</p>
+			<p><h:outputText value="#{strings['instructionsMail']}" />.</p>
+			<p><h:outputText value="#{strings['pasDeMail']}" /> <h:commandLink action="#{boutiqueBacking.sendMail}"><h:outputText value="#{strings['newMail']}" /></h:commandLink>.</p>
+		</rich:panel>
+	</ui:define>
+</ui:composition>
+

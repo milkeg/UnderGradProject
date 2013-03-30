@@ -1,0 +1,29 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j" template="/template.xhtml">
+	<ui:define name="center">
+   
+	<h:outputText value="#{strings['seConnecter']}" />
+   
+          <h:inputText id="login"
+			value="#{boutiqueBacking.client.login}" required="true"
+			binding="#{boutiqueBacking.UILogin}" />
+		<h:message for="login"></h:message>
+	<h:outputText value="#{strings['password']}" />
+		<h:inputSecret id="password"
+			value="#{boutiqueBacking.client.password}" required="true"
+			binding="#{boutiqueBacking.UIPassword}" />
+		<h:message for="password"></h:message>
+<h:outputText value="#{strings['remember']}" />
+		<h:selectBooleanCheckbox id="remember" value="#{boutiqueBacking.rememberme}" />
+
+		<h:commandButton value="#{strings['seConnecter']}" action="#{boutiqueBacking.doLogin}"></h:commandButton>
+
+
+		<h:messages></h:messages>
+
+	</ui:define>
+</ui:composition>

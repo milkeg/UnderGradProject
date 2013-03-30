@@ -1,0 +1,14 @@
+Tue Jan 22 17:35:18 CET 2013 : Apache Derby Serveur réseau - 10.9.1.1 - (1389855) démarré et prêt à accepter les connexions sur le port 1527
+----------------------------------------------------------------
+Tue Jan 22 17:50:31 CET 2013:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.9.1.1 - (1389855): instance a816c00e-013c-631d-1c7e-00000000002e 
+on database directory /Users/michaelgoletto/Documents/workspace/BookStore-Hibernate-JSF20-Start/bookstore  with class loader sun.misc.Launcher$AppClassLoader@1f3e8d89 
+Loaded from file:/Applications/Developer/Eclipse%20JEE/plugins/org.apache.derby.core_10.9.1/derby.jar
+java.vendor=Apple Inc.
+java.runtime.version=1.6.0_37-b06-434-11M3909
+user.dir=/Users/michaelgoletto/Documents/workspace/BookStore-Hibernate-JSF20-Start
+os.name=Mac OS X
+os.arch=x86_64
+os.version=10.7.5
+derby.system.home=.
+Database Class Loader started - derby.database.classpath=''
