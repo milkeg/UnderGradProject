@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE listeComptes SYSTEM "comptes.dtd" >
+<listeComptes>
+  <compte numeroCompte="111" password="coucou">
+    <solde>100</solde>
+  </compte>
+  <compte numeroCompte="222" password="coucou">
+    <solde>678</solde>
+  </compte>
+  <compte numeroCompte="333" password="coucou">
+    <solde>54</solde>
+  </compte>
+  <compte numeroCompte="444" password="coucou">
+    <solde>29.9</solde>
+  </compte>
+</listeComptes>

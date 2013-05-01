@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://wsgros" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://wsgros" xmlns:intf="http://wsgros" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://wsgros" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="commanderProduit">
+    <complexType>
+     <sequence>
+      <element name="ref" type="xsd:string"/>
+      <element name="quantite" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="commanderProduitResponse">
+    <complexType>
+     <sequence>
+      <element name="commanderProduitReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="verifierGrossiste">
+    <complexType>
+     <sequence>
+      <element name="ref" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="verifierGrossisteResponse">
+    <complexType>
+     <sequence>
+      <element name="verifierGrossisteReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="commanderProduitRequest">
+
+      <wsdl:part element="impl:commanderProduit" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="commanderProduitResponse">
+
+      <wsdl:part element="impl:commanderProduitResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="verifierGrossisteRequest">
+
+      <wsdl:part element="impl:verifierGrossiste" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="verifierGrossisteResponse">
+
+      <wsdl:part element="impl:verifierGrossisteResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="WSGros">
+
+      <wsdl:operation name="commanderProduit">
+
+         <wsdl:input message="impl:commanderProduitRequest" name="commanderProduitRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:commanderProduitResponse" name="commanderProduitResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="verifierGrossiste">
+
+         <wsdl:input message="impl:verifierGrossisteRequest" name="verifierGrossisteRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:verifierGrossisteResponse" name="verifierGrossisteResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="WSGrosSoapBinding" type="impl:WSGros">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="commanderProduit">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="commanderProduitRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="commanderProduitResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="verifierGrossiste">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="verifierGrossisteRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="verifierGrossisteResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="WSGrosService">
+
+      <wsdl:port binding="impl:WSGrosSoapBinding" name="WSGros">
+
+         <wsdlsoap:address location="http://localhost:8080/WSGros/services/WSGros"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

@@ -1,0 +1,40 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from WSBanqueService WSDL service -->
+
+  <service name="WSBanque" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://wsbanque"/>
+      <parameter name="wsdlServiceElement" value="WSBanqueService"/>
+      <parameter name="schemaQualified" value="http://wsbanque"/>
+      <parameter name="wsdlServicePort" value="WSBanque"/>
+      <parameter name="className" value="wsbanque.WSBanqueSoapBindingImpl"/>
+      <parameter name="wsdlPortType" value="WSBanque"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="verifierFondDispo" qname="operNS:verifierFondDispo" xmlns:operNS="http://wsbanque" returnQName="retNS:verifierFondDispoReturn" xmlns:retNS="http://wsbanque" returnType="rtns:int" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:numeroCompte" xmlns:pns="http://wsbanque" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:password" xmlns:pns="http://wsbanque" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:montant" xmlns:pns="http://wsbanque" type="tns:double" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="effectuerPaiment" qname="operNS:effectuerPaiment" xmlns:operNS="http://wsbanque" returnQName="retNS:effectuerPaimentReturn" xmlns:retNS="http://wsbanque" returnType="rtns:boolean" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:numeroCompte" xmlns:pns="http://wsbanque" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:montant" xmlns:pns="http://wsbanque" type="tns:double" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="addCompte" qname="operNS:addCompte" xmlns:operNS="http://wsbanque" returnQName="retNS:addCompteReturn" xmlns:retNS="http://wsbanque" returnType="rtns:boolean" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:numeroCompte" xmlns:pns="http://wsbanque" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:password" xmlns:pns="http://wsbanque" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:solde" xmlns:pns="http://wsbanque" type="tns:double" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <parameter name="allowedMethods" value="addCompte effectuerPaiment verifierFondDispo"/>
+
+  </service>
+</deployment>

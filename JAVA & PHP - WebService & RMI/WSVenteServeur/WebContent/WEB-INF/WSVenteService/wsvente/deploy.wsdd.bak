@@ -1,0 +1,108 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from WSVenteService WSDL service -->
+
+  <service name="WSVente" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://wsvente"/>
+      <parameter name="wsdlServiceElement" value="WSVenteService"/>
+      <parameter name="schemaQualified" value="http://wsvente"/>
+      <parameter name="wsdlServicePort" value="WSVente"/>
+      <parameter name="className" value="wsvente.WSVenteSoapBindingImpl"/>
+      <parameter name="wsdlPortType" value="WSVente"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="consulterPrix" qname="operNS:consulterPrix" xmlns:operNS="http://wsvente" returnQName="retNS:consulterPrixReturn" xmlns:retNS="http://wsvente" returnType="rtns:float" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:ref" xmlns:pns="http://wsvente" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="initCommunication" qname="operNS:initCommunication" xmlns:operNS="http://wsvente" soapAction="" >
+      </operation>
+      <operation name="verifierDisponibilite" qname="operNS:verifierDisponibilite" xmlns:operNS="http://wsvente" returnQName="retNS:verifierDisponibiliteReturn" xmlns:retNS="http://wsvente" returnType="rtns:int" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:ref" xmlns:pns="http://wsvente" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="ajouterPanier" qname="operNS:ajouterPanier" xmlns:operNS="http://wsvente" returnQName="retNS:ajouterPanierReturn" xmlns:retNS="http://wsvente" returnType="rtns:boolean" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:cat" xmlns:pns="http://wsvente" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:ref" xmlns:pns="http://wsvente" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:quantite" xmlns:pns="http://wsvente" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="acheterPanier" qname="operNS:acheterPanier" xmlns:operNS="http://wsvente" returnQName="retNS:acheterPanierReturn" xmlns:retNS="http://wsvente" returnType="rtns:boolean" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:numeroCompte" xmlns:pns="http://wsvente" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:password" xmlns:pns="http://wsvente" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:nomClient" xmlns:pns="http://wsvente" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:prenomClient" xmlns:pns="http://wsvente" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="setMessageBanque" qname="operNS:setMessageBanque" xmlns:operNS="http://wsvente" soapAction="" >
+        <parameter qname="pns:messageBanque" xmlns:pns="http://wsvente" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="getPanier" qname="operNS:getPanier" xmlns:operNS="http://wsvente" returnQName="retNS:getPanierReturn" xmlns:retNS="http://wsvente" returnType="rtns:PanierItem" xmlns:rtns="http://wsvente" soapAction="" >
+      </operation>
+      <operation name="retirerPanier" qname="operNS:retirerPanier" xmlns:operNS="http://wsvente" returnQName="retNS:retirerPanierReturn" xmlns:retNS="http://wsvente" returnType="rtns:boolean" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:cat" xmlns:pns="http://wsvente" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:ref" xmlns:pns="http://wsvente" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:quantite" xmlns:pns="http://wsvente" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="viderPanier" qname="operNS:viderPanier" xmlns:operNS="http://wsvente" returnQName="retNS:viderPanierReturn" xmlns:retNS="http://wsvente" returnType="rtns:boolean" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+      </operation>
+      <operation name="changerDevise" qname="operNS:changerDevise" xmlns:operNS="http://wsvente" returnQName="retNS:changerDeviseReturn" xmlns:retNS="http://wsvente" returnType="rtns:boolean" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:nouvDev" xmlns:pns="http://wsvente" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="validerAjout" qname="operNS:validerAjout" xmlns:operNS="http://wsvente" returnQName="retNS:validerAjoutReturn" xmlns:retNS="http://wsvente" returnType="rtns:boolean" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:descr" xmlns:pns="http://wsvente" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:cat" xmlns:pns="http://wsvente" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:ref" xmlns:pns="http://wsvente" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="getListeProduitsParCategorie" qname="operNS:getListeProduitsParCategorie" xmlns:operNS="http://wsvente" returnQName="retNS:getListeProduitsParCategorieReturn" xmlns:retNS="http://wsvente" returnType="rtns:Produit" xmlns:rtns="http://wsvente" soapAction="" >
+        <parameter qname="pns:categorie" xmlns:pns="http://wsvente" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="getListeProduitsParType" qname="operNS:getListeProduitsParType" xmlns:operNS="http://wsvente" returnQName="retNS:getListeProduitsParTypeReturn" xmlns:retNS="http://wsvente" returnType="rtns:Produit" xmlns:rtns="http://wsvente" soapAction="" >
+        <parameter qname="pns:type" xmlns:pns="http://wsvente" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="getAllProduits" qname="operNS:getAllProduits" xmlns:operNS="http://wsvente" returnQName="retNS:getAllProduitsReturn" xmlns:retNS="http://wsvente" returnType="rtns:Produit" xmlns:rtns="http://wsvente" soapAction="" >
+      </operation>
+      <operation name="getListeCategorie" qname="operNS:getListeCategorie" xmlns:operNS="http://wsvente" returnQName="retNS:getListeCategorieReturn" xmlns:retNS="http://wsvente" returnType="rtns:Categorie" xmlns:rtns="http://wsvente" soapAction="" >
+      </operation>
+      <operation name="getMessageBanque" qname="operNS:getMessageBanque" xmlns:operNS="http://wsvente" returnQName="retNS:getMessageBanqueReturn" xmlns:retNS="http://wsvente" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+      </operation>
+      <operation name="getTotalPanier" qname="operNS:getTotalPanier" xmlns:operNS="http://wsvente" returnQName="retNS:getTotalPanierReturn" xmlns:retNS="http://wsvente" returnType="rtns:float" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+      </operation>
+      <operation name="setMessageDelai" qname="operNS:setMessageDelai" xmlns:operNS="http://wsvente" soapAction="" >
+        <parameter qname="pns:messageDelai" xmlns:pns="http://wsvente" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="getMessageDelai" qname="operNS:getMessageDelai" xmlns:operNS="http://wsvente" returnQName="retNS:getMessageDelaiReturn" xmlns:retNS="http://wsvente" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+      </operation>
+      <parameter name="allowedMethods" value="getMessageBanque changerDevise getMessageDelai getTotalPanier consulterPrix retirerPanier validerAjout getListeCategorie acheterPanier setMessageBanque getListeProduitsParType getPanier verifierDisponibilite getAllProduits initCommunication ajouterPanier getListeProduitsParCategorie setMessageDelai viderPanier"/>
+
+      <typeMapping
+        xmlns:ns="http://wsvente"
+        qname="ns:PanierItem"
+        type="java:wsvente.PanierItem"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://wsvente"
+        qname="ns:Produit"
+        type="java:wsvente.Produit"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://wsvente"
+        qname="ns:Categorie"
+        type="java:wsvente.Categorie"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+  </service>
+</deployment>

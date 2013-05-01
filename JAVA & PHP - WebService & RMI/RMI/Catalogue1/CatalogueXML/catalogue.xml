@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catalogue SYSTEM "catalogue.dtd">
+<catalogue>
+	<produit categorie="Livre">
+   		<nomProduit>Les Robots</nomProduit>
+	    <quantite>12</quantite>
+	    <prix>5.2</prix>
+	    <description>Livre de Isaac Asimov</description>
+  	</produit>
+	<produit categorie="Livre">
+		<nomProduit>Harry Potter</nomProduit>
+	    <quantite>20</quantite>
+	    <prix>9.3</prix>
+	    <description>Livre de J.K. Rowling</description>
+	</produit>
+  	<produit categorie="Livre">
+    	<nomProduit>Le Seigneur des Anneaux</nomProduit>
+    	<quantite>6</quantite>
+	    <prix>4.8</prix>
+	    <description>Livre de J.R.R Tolkien</description>
+	</produit>
+	<produit categorie="Livre">
+    	<nomProduit>Le Rire du Cyclope</nomProduit>
+    	<quantite>23</quantite>
+    	<prix>6.4</prix>
+    	<description>Livre de Bernard Werber</description>
+  	</produit>
+  	<produit categorie="Musique">
+    	<nomProduit>Ben l'Oncle Soul</nomProduit>
+    	<quantite>23</quantite>
+    	<prix>17.4</prix>
+    	<description>Dernier album de Ben l'Oncle Soul</description>
+  	</produit>
+</catalogue>
+

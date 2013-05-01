@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catalogue SYSTEM "catalogue.dtd">
+<catalogue>
+	<produit categorie="Musique">
+    	<nomProduit>Guitare Folk</nomProduit>
+	    <quantite>3</quantite>
+	    <prix>138.2</prix>
+	    <description>Guitare de marque Guild</description>
+  	</produit>
+	<produit categorie="Vetement">
+		<nomProduit>Chaussures de sport</nomProduit>
+	    <quantite>20</quantite>
+	    <prix>32.1</prix>
+	    <description>Chaussures de tennis rouge</description>
+	</produit>
+  	<produit categorie="Papeterie">
+    	<nomProduit>Stylo BIC</nomProduit>
+    	<quantite>45</quantite>
+		<prix>1.2</prix>
+		<description>Stylo quatre couleurs</description>
+	</produit>
+	<produit categorie="Nourriture">
+    	<nomProduit>Lasagnes au cheval</nomProduit>
+    	<quantite>23</quantite>
+    	<prix>6.4</prix>
+    	<description>Excellentes lasagnes Findus</description>
+  	</produit>
+</catalogue>
+

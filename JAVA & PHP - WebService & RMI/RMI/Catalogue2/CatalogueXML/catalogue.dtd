@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!ELEMENT catalogue (produit)+>
+<!ELEMENT produit (nomProduit, quantite, prix, description)>
+<!ATTLIST produit categorie (Livre|Nourriture|Vetement|Papeterie|Musique) #REQUIRED>
+<!ELEMENT nomProduit (#PCDATA)> 
+<!ELEMENT quantite (#PCDATA)>
+<!ELEMENT prix (#PCDATA)>
+<!ELEMENT description (#PCDATA)>

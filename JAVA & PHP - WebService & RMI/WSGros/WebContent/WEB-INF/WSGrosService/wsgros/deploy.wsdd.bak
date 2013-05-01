@@ -1,0 +1,33 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from WSGrosService WSDL service -->
+
+  <service name="WSGros" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://wsgros"/>
+      <parameter name="wsdlServiceElement" value="WSGrosService"/>
+      <parameter name="schemaQualified" value="http://wsgros"/>
+      <parameter name="wsdlServicePort" value="WSGros"/>
+      <parameter name="className" value="wsgros.WSGrosSoapBindingImpl"/>
+      <parameter name="wsdlPortType" value="WSGros"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="commanderProduit" qname="operNS:commanderProduit" xmlns:operNS="http://wsgros" returnQName="retNS:commanderProduitReturn" xmlns:retNS="http://wsgros" returnType="rtns:boolean" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:ref" xmlns:pns="http://wsgros" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:quantite" xmlns:pns="http://wsgros" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="verifierGrossiste" qname="operNS:verifierGrossiste" xmlns:operNS="http://wsgros" returnQName="retNS:verifierGrossisteReturn" xmlns:retNS="http://wsgros" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:ref" xmlns:pns="http://wsgros" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <parameter name="allowedMethods" value="commanderProduit verifierGrossiste"/>
+
+  </service>
+</deployment>

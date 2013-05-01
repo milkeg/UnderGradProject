@@ -1,0 +1,1157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://wsvente" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://wsvente" xmlns:intf="http://wsvente" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://wsvente" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="consulterPrix">
+    <complexType>
+     <sequence>
+      <element name="ref" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="consulterPrixResponse">
+    <complexType>
+     <sequence>
+      <element name="consulterPrixReturn" type="xsd:float"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="initCommunication">
+    <complexType/>
+   </element>
+   <element name="initCommunicationResponse">
+    <complexType/>
+   </element>
+   <element name="verifierDisponibilite">
+    <complexType>
+     <sequence>
+      <element name="ref" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="verifierDisponibiliteResponse">
+    <complexType>
+     <sequence>
+      <element name="verifierDisponibiliteReturn" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="ajouterPanier">
+    <complexType>
+     <sequence>
+      <element name="cat" type="xsd:string"/>
+      <element name="ref" type="xsd:string"/>
+      <element name="quantite" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="ajouterPanierResponse">
+    <complexType>
+     <sequence>
+      <element name="ajouterPanierReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="acheterPanier">
+    <complexType>
+     <sequence>
+      <element name="numeroCompte" type="xsd:int"/>
+      <element name="password" type="xsd:string"/>
+      <element name="nomClient" type="xsd:string"/>
+      <element name="prenomClient" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="acheterPanierResponse">
+    <complexType>
+     <sequence>
+      <element name="acheterPanierReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="setMessageBanque">
+    <complexType>
+     <sequence>
+      <element name="messageBanque" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="setMessageBanqueResponse">
+    <complexType/>
+   </element>
+   <element name="getPanier">
+    <complexType/>
+   </element>
+   <element name="getPanierResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="getPanierReturn" type="impl:PanierItem"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="PanierItem">
+    <sequence>
+     <element name="quantite" type="xsd:int"/>
+     <element name="reference" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <element name="retirerPanier">
+    <complexType>
+     <sequence>
+      <element name="cat" type="xsd:string"/>
+      <element name="ref" type="xsd:string"/>
+      <element name="quantite" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="retirerPanierResponse">
+    <complexType>
+     <sequence>
+      <element name="retirerPanierReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="viderPanier">
+    <complexType/>
+   </element>
+   <element name="viderPanierResponse">
+    <complexType>
+     <sequence>
+      <element name="viderPanierReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="changerDevise">
+    <complexType>
+     <sequence>
+      <element name="nouvDev" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="changerDeviseResponse">
+    <complexType>
+     <sequence>
+      <element name="changerDeviseReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="validerAjout">
+    <complexType>
+     <sequence>
+      <element name="descr" type="xsd:string"/>
+      <element name="cat" type="xsd:string"/>
+      <element name="ref" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="validerAjoutResponse">
+    <complexType>
+     <sequence>
+      <element name="validerAjoutReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getListeProduitsParCategorie">
+    <complexType>
+     <sequence>
+      <element name="categorie" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getListeProduitsParCategorieResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="getListeProduitsParCategorieReturn" type="impl:Produit"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="Categorie">
+    <sequence>
+     <element name="description" nillable="true" type="xsd:string"/>
+     <element name="nom" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="Produit">
+    <sequence>
+     <element name="categorie" nillable="true" type="impl:Categorie"/>
+     <element name="description" nillable="true" type="xsd:string"/>
+     <element name="nom" nillable="true" type="xsd:string"/>
+     <element name="prix" type="xsd:float"/>
+     <element name="quantite" type="xsd:int"/>
+     <element name="type" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <element name="getListeProduitsParType">
+    <complexType>
+     <sequence>
+      <element name="type" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getListeProduitsParTypeResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="getListeProduitsParTypeReturn" type="impl:Produit"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getAllProduits">
+    <complexType/>
+   </element>
+   <element name="getAllProduitsResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="getAllProduitsReturn" type="impl:Produit"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getListeCategorie">
+    <complexType/>
+   </element>
+   <element name="getListeCategorieResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="getListeCategorieReturn" type="impl:Categorie"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getMessageBanque">
+    <complexType/>
+   </element>
+   <element name="getMessageBanqueResponse">
+    <complexType>
+     <sequence>
+      <element name="getMessageBanqueReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getTotalPanier">
+    <complexType/>
+   </element>
+   <element name="getTotalPanierResponse">
+    <complexType>
+     <sequence>
+      <element name="getTotalPanierReturn" type="xsd:float"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="setMessageDelai">
+    <complexType>
+     <sequence>
+      <element name="messageDelai" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="setMessageDelaiResponse">
+    <complexType/>
+   </element>
+   <element name="getMessageDelai">
+    <complexType/>
+   </element>
+   <element name="getMessageDelaiResponse">
+    <complexType>
+     <sequence>
+      <element name="getMessageDelaiReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="getMessageBanqueRequest">
+
+      <wsdl:part element="impl:getMessageBanque" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="setMessageDelaiResponse">
+
+      <wsdl:part element="impl:setMessageDelaiResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="acheterPanierResponse">
+
+      <wsdl:part element="impl:acheterPanierResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="viderPanierResponse">
+
+      <wsdl:part element="impl:viderPanierResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="setMessageDelaiRequest">
+
+      <wsdl:part element="impl:setMessageDelai" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="acheterPanierRequest">
+
+      <wsdl:part element="impl:acheterPanier" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="initCommunicationResponse">
+
+      <wsdl:part element="impl:initCommunicationResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="validerAjoutResponse">
+
+      <wsdl:part element="impl:validerAjoutResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getTotalPanierResponse">
+
+      <wsdl:part element="impl:getTotalPanierResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getTotalPanierRequest">
+
+      <wsdl:part element="impl:getTotalPanier" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getListeProduitsParCategorieResponse">
+
+      <wsdl:part element="impl:getListeProduitsParCategorieResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getListeProduitsParTypeRequest">
+
+      <wsdl:part element="impl:getListeProduitsParType" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getListeCategorieRequest">
+
+      <wsdl:part element="impl:getListeCategorie" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="initCommunicationRequest">
+
+      <wsdl:part element="impl:initCommunication" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="consulterPrixResponse">
+
+      <wsdl:part element="impl:consulterPrixResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="ajouterPanierResponse">
+
+      <wsdl:part element="impl:ajouterPanierResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="setMessageBanqueResponse">
+
+      <wsdl:part element="impl:setMessageBanqueResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getMessageDelaiRequest">
+
+      <wsdl:part element="impl:getMessageDelai" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getListeProduitsParTypeResponse">
+
+      <wsdl:part element="impl:getListeProduitsParTypeResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="retirerPanierRequest">
+
+      <wsdl:part element="impl:retirerPanier" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="viderPanierRequest">
+
+      <wsdl:part element="impl:viderPanier" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getMessageBanqueResponse">
+
+      <wsdl:part element="impl:getMessageBanqueResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="setMessageBanqueRequest">
+
+      <wsdl:part element="impl:setMessageBanque" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getAllProduitsResponse">
+
+      <wsdl:part element="impl:getAllProduitsResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="ajouterPanierRequest">
+
+      <wsdl:part element="impl:ajouterPanier" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="changerDeviseResponse">
+
+      <wsdl:part element="impl:changerDeviseResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="verifierDisponibiliteResponse">
+
+      <wsdl:part element="impl:verifierDisponibiliteResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getMessageDelaiResponse">
+
+      <wsdl:part element="impl:getMessageDelaiResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="retirerPanierResponse">
+
+      <wsdl:part element="impl:retirerPanierResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="validerAjoutRequest">
+
+      <wsdl:part element="impl:validerAjout" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getAllProduitsRequest">
+
+      <wsdl:part element="impl:getAllProduits" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getListeCategorieResponse">
+
+      <wsdl:part element="impl:getListeCategorieResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="consulterPrixRequest">
+
+      <wsdl:part element="impl:consulterPrix" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getPanierResponse">
+
+      <wsdl:part element="impl:getPanierResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getListeProduitsParCategorieRequest">
+
+      <wsdl:part element="impl:getListeProduitsParCategorie" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="changerDeviseRequest">
+
+      <wsdl:part element="impl:changerDevise" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="verifierDisponibiliteRequest">
+
+      <wsdl:part element="impl:verifierDisponibilite" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getPanierRequest">
+
+      <wsdl:part element="impl:getPanier" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="WSVente">
+
+      <wsdl:operation name="consulterPrix">
+
+         <wsdl:input message="impl:consulterPrixRequest" name="consulterPrixRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:consulterPrixResponse" name="consulterPrixResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="initCommunication">
+
+         <wsdl:input message="impl:initCommunicationRequest" name="initCommunicationRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:initCommunicationResponse" name="initCommunicationResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="verifierDisponibilite">
+
+         <wsdl:input message="impl:verifierDisponibiliteRequest" name="verifierDisponibiliteRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:verifierDisponibiliteResponse" name="verifierDisponibiliteResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="ajouterPanier">
+
+         <wsdl:input message="impl:ajouterPanierRequest" name="ajouterPanierRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:ajouterPanierResponse" name="ajouterPanierResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="acheterPanier">
+
+         <wsdl:input message="impl:acheterPanierRequest" name="acheterPanierRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:acheterPanierResponse" name="acheterPanierResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="setMessageBanque">
+
+         <wsdl:input message="impl:setMessageBanqueRequest" name="setMessageBanqueRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:setMessageBanqueResponse" name="setMessageBanqueResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getPanier">
+
+         <wsdl:input message="impl:getPanierRequest" name="getPanierRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getPanierResponse" name="getPanierResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="retirerPanier">
+
+         <wsdl:input message="impl:retirerPanierRequest" name="retirerPanierRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:retirerPanierResponse" name="retirerPanierResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="viderPanier">
+
+         <wsdl:input message="impl:viderPanierRequest" name="viderPanierRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:viderPanierResponse" name="viderPanierResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="changerDevise">
+
+         <wsdl:input message="impl:changerDeviseRequest" name="changerDeviseRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:changerDeviseResponse" name="changerDeviseResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="validerAjout">
+
+         <wsdl:input message="impl:validerAjoutRequest" name="validerAjoutRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:validerAjoutResponse" name="validerAjoutResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getListeProduitsParCategorie">
+
+         <wsdl:input message="impl:getListeProduitsParCategorieRequest" name="getListeProduitsParCategorieRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getListeProduitsParCategorieResponse" name="getListeProduitsParCategorieResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getListeProduitsParType">
+
+         <wsdl:input message="impl:getListeProduitsParTypeRequest" name="getListeProduitsParTypeRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getListeProduitsParTypeResponse" name="getListeProduitsParTypeResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getAllProduits">
+
+         <wsdl:input message="impl:getAllProduitsRequest" name="getAllProduitsRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getAllProduitsResponse" name="getAllProduitsResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getListeCategorie">
+
+         <wsdl:input message="impl:getListeCategorieRequest" name="getListeCategorieRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getListeCategorieResponse" name="getListeCategorieResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getMessageBanque">
+
+         <wsdl:input message="impl:getMessageBanqueRequest" name="getMessageBanqueRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getMessageBanqueResponse" name="getMessageBanqueResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getTotalPanier">
+
+         <wsdl:input message="impl:getTotalPanierRequest" name="getTotalPanierRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getTotalPanierResponse" name="getTotalPanierResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="setMessageDelai">
+
+         <wsdl:input message="impl:setMessageDelaiRequest" name="setMessageDelaiRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:setMessageDelaiResponse" name="setMessageDelaiResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getMessageDelai">
+
+         <wsdl:input message="impl:getMessageDelaiRequest" name="getMessageDelaiRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getMessageDelaiResponse" name="getMessageDelaiResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="WSVenteSoapBinding" type="impl:WSVente">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="consulterPrix">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="consulterPrixRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="consulterPrixResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="initCommunication">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="initCommunicationRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="initCommunicationResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="verifierDisponibilite">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="verifierDisponibiliteRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="verifierDisponibiliteResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="ajouterPanier">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="ajouterPanierRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="ajouterPanierResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="acheterPanier">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="acheterPanierRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="acheterPanierResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="setMessageBanque">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="setMessageBanqueRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="setMessageBanqueResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getPanier">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getPanierRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getPanierResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="retirerPanier">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="retirerPanierRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="retirerPanierResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="viderPanier">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="viderPanierRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="viderPanierResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="changerDevise">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="changerDeviseRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="changerDeviseResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="validerAjout">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="validerAjoutRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="validerAjoutResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getListeProduitsParCategorie">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getListeProduitsParCategorieRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getListeProduitsParCategorieResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getListeProduitsParType">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getListeProduitsParTypeRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getListeProduitsParTypeResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getAllProduits">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getAllProduitsRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getAllProduitsResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getListeCategorie">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getListeCategorieRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getListeCategorieResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getMessageBanque">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getMessageBanqueRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getMessageBanqueResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getTotalPanier">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getTotalPanierRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getTotalPanierResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="setMessageDelai">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="setMessageDelaiRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="setMessageDelaiResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getMessageDelai">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getMessageDelaiRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getMessageDelaiResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="WSVenteService">
+
+      <wsdl:port binding="impl:WSVenteSoapBinding" name="WSVente">
+
+         <wsdlsoap:address location="http://localhost:8080/WSVenteServeur/services/WSVente"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

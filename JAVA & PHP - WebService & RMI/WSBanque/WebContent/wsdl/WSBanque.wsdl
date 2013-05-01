@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://wsbanque" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://wsbanque" xmlns:intf="http://wsbanque" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://wsbanque" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="verifierFondDispo">
+    <complexType>
+     <sequence>
+      <element name="numeroCompte" type="xsd:int"/>
+      <element name="password" type="xsd:string"/>
+      <element name="montant" type="xsd:double"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="verifierFondDispoResponse">
+    <complexType>
+     <sequence>
+      <element name="verifierFondDispoReturn" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="effectuerPaiment">
+    <complexType>
+     <sequence>
+      <element name="numeroCompte" type="xsd:int"/>
+      <element name="montant" type="xsd:double"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="effectuerPaimentResponse">
+    <complexType>
+     <sequence>
+      <element name="effectuerPaimentReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="addCompte">
+    <complexType>
+     <sequence>
+      <element name="numeroCompte" type="xsd:int"/>
+      <element name="password" type="xsd:string"/>
+      <element name="solde" type="xsd:double"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="addCompteResponse">
+    <complexType>
+     <sequence>
+      <element name="addCompteReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="effectuerPaimentRequest">
+
+      <wsdl:part element="impl:effectuerPaiment" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="addCompteRequest">
+
+      <wsdl:part element="impl:addCompte" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="verifierFondDispoResponse">
+
+      <wsdl:part element="impl:verifierFondDispoResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="addCompteResponse">
+
+      <wsdl:part element="impl:addCompteResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="verifierFondDispoRequest">
+
+      <wsdl:part element="impl:verifierFondDispo" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="effectuerPaimentResponse">
+
+      <wsdl:part element="impl:effectuerPaimentResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="WSBanque">
+
+      <wsdl:operation name="verifierFondDispo">
+
+         <wsdl:input message="impl:verifierFondDispoRequest" name="verifierFondDispoRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:verifierFondDispoResponse" name="verifierFondDispoResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="effectuerPaiment">
+
+         <wsdl:input message="impl:effectuerPaimentRequest" name="effectuerPaimentRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:effectuerPaimentResponse" name="effectuerPaimentResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="addCompte">
+
+         <wsdl:input message="impl:addCompteRequest" name="addCompteRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:addCompteResponse" name="addCompteResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="WSBanqueSoapBinding" type="impl:WSBanque">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="verifierFondDispo">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="verifierFondDispoRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="verifierFondDispoResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="effectuerPaiment">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="effectuerPaimentRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="effectuerPaimentResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="addCompte">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="addCompteRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="addCompteResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="WSBanqueService">
+
+      <wsdl:port binding="impl:WSBanqueSoapBinding" name="WSBanque">
+
+         <wsdlsoap:address location="http://localhost:8080/WSBanque/services/WSBanque"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

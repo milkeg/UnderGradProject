@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!ELEMENT listeComptes (compte)+>
+<!ELEMENT compte (solde)>
+<!ATTLIST compte numeroCompte CDATA #REQUIRED
+				 password CDATA #REQUIRED>
+<!ELEMENT solde (#PCDATA)>

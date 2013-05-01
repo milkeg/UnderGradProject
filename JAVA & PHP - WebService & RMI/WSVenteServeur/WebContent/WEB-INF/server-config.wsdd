@@ -1,0 +1,119 @@
+<ns1:deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns1="http://xml.apache.org/axis/wsdd/">
+ <ns1:globalConfiguration>
+  <ns1:parameter name="sendMultiRefs" value="true"/>
+  <ns1:parameter name="disablePrettyXML" value="true"/>
+  <ns1:parameter name="adminPassword" value="admin"/>
+  <ns1:parameter name="attachments.Directory" value="/Users/Raf/Desktop/ServicesWeb/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/WSVenteServeur/WEB-INF/attachments"/>
+  <ns1:parameter name="dotNetSoapEncFix" value="true"/>
+  <ns1:parameter name="enableNamespacePrefixOptimization" value="false"/>
+  <ns1:parameter name="sendXMLDeclaration" value="true"/>
+  <ns1:parameter name="attachments.implementation" value="org.apache.axis.attachments.AttachmentsImpl"/>
+  <ns1:parameter name="sendXsiTypes" value="true"/>
+  <ns1:requestFlow>
+   <ns1:handler type="java:org.apache.axis.handlers.JWSHandler">
+    <ns1:parameter name="scope" value="session"/>
+   </ns1:handler>
+   <ns1:handler type="java:org.apache.axis.handlers.JWSHandler">
+    <ns1:parameter name="scope" value="request"/>
+    <ns1:parameter name="extension" value=".jwr"/>
+   </ns1:handler>
+  </ns1:requestFlow>
+ </ns1:globalConfiguration>
+ <ns1:handler name="URLMapper" type="java:org.apache.axis.handlers.http.URLMapper"/>
+ <ns1:handler name="LocalResponder" type="java:org.apache.axis.transport.local.LocalResponder"/>
+ <ns1:handler name="Authenticate" type="java:org.apache.axis.handlers.SimpleAuthenticationHandler"/>
+ <ns1:service name="WSVente" provider="java:RPC" style="wrapped" use="literal">
+  <ns2:operation name="consulterPrix" qname="ns1:consulterPrix" returnQName="ns1:consulterPrixReturn" returnType="xsd:float" soapAction="" xmlns:ns1="http://wsvente" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns2="http://xml.apache.org/axis/wsdd/">
+   <ns2:parameter qname="ns1:ref" type="xsd:string"/>
+  </ns2:operation>
+  <ns1:operation name="initCommunication" qname="ns2:initCommunication" soapAction="" xmlns:ns2="http://wsvente"/>
+  <ns1:operation name="verifierDisponibilite" qname="ns3:verifierDisponibilite" returnQName="ns3:verifierDisponibiliteReturn" returnType="xsd:int" soapAction="" xmlns:ns3="http://wsvente" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns3:ref" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="ajouterPanier" qname="ns4:ajouterPanier" returnQName="ns4:ajouterPanierReturn" returnType="xsd:boolean" soapAction="" xmlns:ns4="http://wsvente" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns4:cat" type="xsd:string"/>
+   <ns1:parameter qname="ns4:ref" type="xsd:string"/>
+   <ns1:parameter qname="ns4:quantite" type="xsd:int"/>
+  </ns1:operation>
+  <ns1:operation name="acheterPanier" qname="ns5:acheterPanier" returnQName="ns5:acheterPanierReturn" returnType="xsd:boolean" soapAction="" xmlns:ns5="http://wsvente" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns5:numeroCompte" type="xsd:int"/>
+   <ns1:parameter qname="ns5:password" type="xsd:string"/>
+   <ns1:parameter qname="ns5:nomClient" type="xsd:string"/>
+   <ns1:parameter qname="ns5:prenomClient" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="setMessageBanque" qname="ns6:setMessageBanque" soapAction="" xmlns:ns6="http://wsvente">
+   <ns1:parameter qname="ns6:messageBanque" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns1:operation>
+  <ns1:operation name="getPanier" qname="ns7:getPanier" returnQName="ns7:getPanierReturn" returnType="ns7:PanierItem" soapAction="" xmlns:ns7="http://wsvente"/>
+  <ns1:operation name="retirerPanier" qname="ns8:retirerPanier" returnQName="ns8:retirerPanierReturn" returnType="xsd:boolean" soapAction="" xmlns:ns8="http://wsvente" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns8:cat" type="xsd:string"/>
+   <ns1:parameter qname="ns8:ref" type="xsd:string"/>
+   <ns1:parameter qname="ns8:quantite" type="xsd:int"/>
+  </ns1:operation>
+  <ns1:operation name="viderPanier" qname="ns9:viderPanier" returnQName="ns9:viderPanierReturn" returnType="xsd:boolean" soapAction="" xmlns:ns9="http://wsvente" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  <ns1:operation name="changerDevise" qname="ns10:changerDevise" returnQName="ns10:changerDeviseReturn" returnType="xsd:boolean" soapAction="" xmlns:ns10="http://wsvente" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns10:nouvDev" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="validerAjout" qname="ns11:validerAjout" returnQName="ns11:validerAjoutReturn" returnType="xsd:boolean" soapAction="" xmlns:ns11="http://wsvente" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns11:descr" type="xsd:string"/>
+   <ns1:parameter qname="ns11:cat" type="xsd:string"/>
+   <ns1:parameter qname="ns11:ref" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="getListeProduitsParCategorie" qname="ns12:getListeProduitsParCategorie" returnQName="ns12:getListeProduitsParCategorieReturn" returnType="ns12:Produit" soapAction="" xmlns:ns12="http://wsvente">
+   <ns1:parameter qname="ns12:categorie" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns1:operation>
+  <ns1:operation name="getListeProduitsParType" qname="ns13:getListeProduitsParType" returnQName="ns13:getListeProduitsParTypeReturn" returnType="ns13:Produit" soapAction="" xmlns:ns13="http://wsvente">
+   <ns1:parameter qname="ns13:type" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns1:operation>
+  <ns1:operation name="getAllProduits" qname="ns14:getAllProduits" returnQName="ns14:getAllProduitsReturn" returnType="ns14:Produit" soapAction="" xmlns:ns14="http://wsvente"/>
+  <ns1:operation name="getListeCategorie" qname="ns15:getListeCategorie" returnQName="ns15:getListeCategorieReturn" returnType="ns15:Categorie" soapAction="" xmlns:ns15="http://wsvente"/>
+  <ns1:operation name="getMessageBanque" qname="ns16:getMessageBanque" returnQName="ns16:getMessageBanqueReturn" returnType="xsd:string" soapAction="" xmlns:ns16="http://wsvente" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  <ns1:operation name="getTotalPanier" qname="ns17:getTotalPanier" returnQName="ns17:getTotalPanierReturn" returnType="xsd:float" soapAction="" xmlns:ns17="http://wsvente" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  <ns1:operation name="setMessageDelai" qname="ns18:setMessageDelai" soapAction="" xmlns:ns18="http://wsvente">
+   <ns1:parameter qname="ns18:messageDelai" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns1:operation>
+  <ns1:operation name="getMessageDelai" qname="ns19:getMessageDelai" returnQName="ns19:getMessageDelaiReturn" returnType="xsd:string" soapAction="" xmlns:ns19="http://wsvente" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  <ns1:parameter name="sendMultiRefs" value="false"/>
+  <ns1:parameter name="wsdlServicePort" value="WSVente"/>
+  <ns1:parameter name="schemaQualified" value="http://wsvente"/>
+  <ns1:parameter name="className" value="wsvente.WSVente"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="allowedMethods" value="getMessageBanque changerDevise getMessageDelai getTotalPanier consulterPrix retirerPanier validerAjout getListeCategorie acheterPanier setMessageBanque getListeProduitsParType getPanier verifierDisponibilite getAllProduits initCommunication ajouterPanier getListeProduitsParCategorie setMessageDelai viderPanier"/>
+  <ns1:parameter name="wsdlServiceElement" value="WSVenteService"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://wsvente"/>
+  <ns1:parameter name="wsdlPortType" value="WSVente"/>
+  <ns1:parameter name="sendXsiTypes" value="false"/>
+  <ns1:parameter name="scope" value="session"/>
+  
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns20:PanierItem" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:wsvente.PanierItem" xmlns:ns20="http://wsvente"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns21:Produit" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:wsvente.Produit" xmlns:ns21="http://wsvente"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns22:Categorie" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:wsvente.Categorie" xmlns:ns22="http://wsvente"/>
+ </ns1:service>
+ <ns1:service name="AdminService" provider="java:MSG">
+  <ns1:parameter name="allowedMethods" value="AdminService"/>
+  <ns1:parameter name="enableRemoteAdmin" value="false"/>
+  <ns1:parameter name="className" value="org.apache.axis.utils.Admin"/>
+  <ns1:namespace>http://xml.apache.org/axis/wsdd/</ns1:namespace>
+ </ns1:service>
+ <ns1:service name="Version" provider="java:RPC">
+  <ns1:parameter name="allowedMethods" value="getVersion"/>
+  <ns1:parameter name="className" value="org.apache.axis.Version"/>
+ </ns1:service>
+ <ns1:transport name="http">
+  <ns1:requestFlow>
+   <ns1:handler type="URLMapper"/>
+   <ns1:handler type="java:org.apache.axis.handlers.http.HTTPAuthHandler"/>
+  </ns1:requestFlow>
+  <ns1:parameter name="qs:list" value="org.apache.axis.transport.http.QSListHandler"/>
+  <ns1:parameter name="qs:wsdl" value="org.apache.axis.transport.http.QSWSDLHandler"/>
+  <ns1:parameter name="qs.list" value="org.apache.axis.transport.http.QSListHandler"/>
+  <ns1:parameter name="qs.method" value="org.apache.axis.transport.http.QSMethodHandler"/>
+  <ns1:parameter name="qs:method" value="org.apache.axis.transport.http.QSMethodHandler"/>
+  <ns1:parameter name="qs.wsdl" value="org.apache.axis.transport.http.QSWSDLHandler"/>
+ </ns1:transport>
+ <ns1:transport name="local">
+  <ns1:responseFlow>
+   <ns1:handler type="LocalResponder"/>
+  </ns1:responseFlow>
+ </ns1:transport>
+</ns1:deployment>
